@@ -64,6 +64,7 @@ summarise(hflights_df, arrTimeSd = sd(ArrTime, na.rm = TRUE),
 
 # 실습: 집단변수를 이용하여 그룹화하기
 species <- group_by(iris, Species)
+head(iris)
 str(species)
 species
 
