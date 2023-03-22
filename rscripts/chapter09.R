@@ -464,8 +464,8 @@ news_data
 # 실습: 수집한 자료를 파일로 저장하고 읽기
 getwd()
 setwd("./output")
-write.csv(news_data, "nes_data.csv", quote = F)
-
+write.csv(news_data, "news_data.csv", quote = F)
+getwd()
 news_data <- read.csv("news_data.csv", header = T, stringsAsFactors = F)
 str(news_data)
 
