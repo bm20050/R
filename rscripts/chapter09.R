@@ -11,7 +11,18 @@ library(DBI)
 Sys.setenv(JAVA_HOME = "C:\\Program Files\\Java\\jdk-17.0.5")
 library(rJava)
 library(RJDBC)
+install.packages("multilinguer")
 
+# 의존성을 설치 한다. 
+install.packages(c('stringr', 'hash', 'tau', 'Sejong', 'RSQLite', 'devtools'), type = "binary")
+
+# Git hub로 설치 한다. 
+install.packages("remotes")
+remotes::install_github('haven-jeon/KoNLP', upgrade = "never", INSTALL_opts=c("--no-multiarch"))
+
+# KoNLP 예제 
+
+library(KoNLP)
 
 # 실습: 드라이버 로딩과 데이터베이스 연동
 # 단계 1: Drive 설정
@@ -155,7 +166,7 @@ install.packages("RSQLite")
 library(KoNLP)
 library(tm)
 library(wordcloud)
-
+install.packages("stringi")
 
 
 # 실습: 텍스트 자료 가져오기 
@@ -422,6 +433,7 @@ plot.igraph(ruleg, vertex.label = V(ruleg)$name,
 
 
 
+# 3.x로 바꾸기
 # 실습: 웹 문서 요청과 파싱 관련 패키지 설치 및 로딩
 install.packages("httr")
 library(httr)
@@ -476,6 +488,7 @@ news_text <- news_data$news_text
 news_text
 
 
+
 # 실습: 세종 사전에 단어 추가 
 user_dic <- data.frame(term = c("펜데믹", "코로나19", "타다"), tag = 'ncn')
 buildDictionary(ext_dic = 'sejong', user_dic = user_dic)
@@ -524,14 +537,18 @@ library(wordcloud)
 myNames <- names(wordResult)
 myNames
 
+install.packages("extrafont")
+library(extrafont)
 
 # 단계 2: 단어와 단어 빈도수 구하기 
 df <- data.frame(word = myNames, freq = wordResult)
 head(df)
 
 # 단계 3: 단어 구름 생성
-pal <- brewer.pas(12, "Paired")
+pal <- brewer.pal(12, "Paired")
+font_import()
 wordcloud(df$word, df$freq, min.freq = 2,
           random.order = F, scale = c(4, 0.7),
-          rot.per = .1, colors = pas, family = "malgun")
+          rot.per = .1, colors = pal, family = "malgun")
+
 
