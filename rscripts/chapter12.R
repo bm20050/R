@@ -3,6 +3,7 @@
 # 실습: 변수 리코딩과 데이터프레임 생성하기 
 # 단계 1: 실습 파일 가져오기 
 getwd()
+setwd("d:/sw15/r")
 data <- read.csv("./data/cleanDescriptive.csv", 
                  header = TRUE, 
                  fileEncoding = "euc-kr")
@@ -35,12 +36,11 @@ library(ggplot2)
 CrossTable(x = diamonds$color, y = diamonds$cut)
 
 
-
 # 실습: 패키지를 이용한 교차 분할표 작성: 부모의 학력수준과 자녀 대학 진학여부
 x <- data$level2
 y <- data$pass2
 
-CrossTable(x, y)
+CrossTable(x, y, chisq = TRUE)
 
 
 
@@ -70,7 +70,7 @@ chisq.test(x$관측도수)
 
 
 # 실습: 부모의 학력수준과 자녀의 대학 진학여부의 독립성(관련성) 검정
-setwd("C:/Rwork/Part-III")
+getwd()
 data <- read.csv("cleanDescriptive.csv", header = TRUE)
 x <- data$level2
 y <- data$pass2
@@ -79,8 +79,8 @@ CrossTable(x, y, chisq = TRUE)
 
 # 실습: 교육센터에서 교육방법에 따라 교육생들의 만족도에 차이가 있는지 검정
 # 단계 1: 데이터 가져오기 
-setwd("C:/Rwork/Part-III")
-data <- read.csv("homogenity.csv")
+
+data <- read.csv("./data/homogenity.csv")
 head(data)
 
 data <- subset(data, !is.na(survey), c(method, survey))
