@@ -88,11 +88,11 @@ air_ctree
 # 단계 5: 분류분석 결과
 plot(air_ctree)
 
-
+# iris, 손글씨 분류 모델
 
 # 실습: 학습데이터와 검정데이터 샘플링으로 분류분석 수행
 # 단계 1: 학습데이터와 검정데이터 샘플링
-#set.seed(1234)
+set.seed(42)
 idx <- sample(1:nrow(iris), nrow(iris) * 0.7)
 train <- iris[idx, ]
 test <- iris[-idx, ]
@@ -119,7 +119,7 @@ pred <- predict(iris_ctree, test)
 table(pred, test$Species)
 
 # 단계 5-2: 분류 정확도 - 96%
-(14 + 16 + 13) / nrow(test)
+(10 + 14 + 17) / nrow(test)
 
 
 # 실습: K겹 교차 검정 샘플링으로 분류 분석하기 
